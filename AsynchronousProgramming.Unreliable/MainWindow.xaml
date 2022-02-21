@@ -1,0 +1,17 @@
+﻿<Window x:Class="AsynchronousProgramming.Unreliable.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AsynchronousProgramming.Unreliable"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnDowload" Content="DOWNLOAD RSS" HorizontalAlignment="Left" Height="66" Margin="54,32,0,0" VerticalAlignment="Top" Width="663" FontSize="16" Click="btnDowload_Click"/>
+        <Button x:Name="btnIncreaseCounter" Content="INCREASE COUNTER" HorizontalAlignment="Left" Height="66" Margin="54,129,0,0" VerticalAlignment="Top" Width="663" FontSize="16" Click="btnIncreaseCounter_Click"/>
+        <Label Content="Counter:" HorizontalAlignment="Left" Margin="54,221,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock x:Name="txtCounter" HorizontalAlignment="Left" Margin="145,224,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="37" Width="236" FontSize="18"/>
+        <TextBox x:Name="txtDownload" HorizontalAlignment="Left" Height="132" Margin="36,261,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="703"/>
+
+    </Grid>
+</Window>
