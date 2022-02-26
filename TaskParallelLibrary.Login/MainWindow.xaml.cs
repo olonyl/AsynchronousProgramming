@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -15,9 +16,48 @@ namespace TaskParallelLibrary.Login
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            ContinuationUsingConfigureAwait();
+            try
+            {
+                btnLogin.IsEnabled = false;
+                var result = await ContinuationUsingAyncAndAwait();
+                btnLogin.Content = result;
+                btnLogin.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                btnLogin.Content = "Internal error";
+                btnLogin.IsEnabled = false;
+            }
+
+        }
+
+        private async Task<string> ContinuationUsingAyncAndAwait()
+        {
+            //throw new Exception();
+            try
+            {
+                var loginTask = Task.Run(() =>
+               {
+                   //throw new Exception();
+
+                   Thread.Sleep(2000);
+                   return "Login Successful!";
+               });
+
+                var logTaks = Task.Delay(2000); //Log the login
+
+                var purchaseTask = Task.Delay(2000); // Fetch purchases
+
+                await Task.WhenAll(loginTask, loginTask, purchaseTask);
+
+                return loginTask.Result;
+            }
+            catch (Exception)
+            {
+                return "Login Failed!";
+            }
         }
 
         public void ContinuationUsingConfigureAwait()
