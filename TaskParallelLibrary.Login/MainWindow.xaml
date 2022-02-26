@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskParallelLibrary.Login"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="206.872" Width="534.479">
     <Grid>
-        
+        <Button x:Name="btnLogin" Content="LOGIN" HorizontalAlignment="Left" Margin="59,113,0,0" VerticalAlignment="Top" Width="399" FontSize="24" Click="btnLogin_Click"/>
+        <TextBox x:Name="txtUser" HorizontalAlignment="Left" Margin="169,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="289"/>
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="74,29,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <PasswordBox x:Name="txtPassword"  HorizontalAlignment="Left" Margin="169,66,0,0"  VerticalAlignment="Top" FontSize="18" Width="289"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="79,66,0,0" VerticalAlignment="Top" FontSize="16"/>
+
     </Grid>
 </Window>

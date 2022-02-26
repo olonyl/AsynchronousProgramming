@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TaskParallelLibrary.Login
 {
@@ -22,7 +11,61 @@ namespace TaskParallelLibrary.Login
     {
         public MainWindow()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            ContinuationUsingConfigureAwait();
+        }
+
+        public void ContinuationUsingConfigureAwait()
+        {
+            btnLogin.IsEnabled = false;
+            var task = Task.Run(() =>
+            {
+                // throw new System.Exception();
+                Thread.Sleep(2000);
+                return "Loign Successful!";
+            });
+
+            task.ConfigureAwait(true)
+                .GetAwaiter()
+                .OnCompleted(() =>
+                {
+                    btnLogin.Content = task.Result;
+                    btnLogin.IsEnabled = true;
+                });
+        }
+
+        public void ContinuationUsingContinueWith()
+        {
+            btnLogin.IsEnabled = false;
+
+            var task = Task.Run(() =>
+            {
+                // throw new System.Exception();
+                Thread.Sleep(2000);
+                return "Loign Successful!";
+            });
+
+            task.ContinueWith((t) =>
+            {
+
+                Dispatcher.Invoke(() =>
+                {
+                    if (t.IsFaulted)
+                    {
+                        btnLogin.Content = "Login Failed";
+                    }
+                    else
+                    {
+                        btnLogin.Content = t.Result;
+                    }
+                    btnLogin.IsEnabled = true;
+                });
+            });
         }
     }
 }
