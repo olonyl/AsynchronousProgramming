@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynchronousProgramming.Rel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskParallelLibrary.Login", "TaskParallelLibrary.Login\TaskParallelLibrary.Login.csproj", "{A92A85BE-2DA7-4F49-A2E7-5B311B30B163}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynchronousProgramming.API3", "AsynchronousProgramming.API3\AsynchronousProgramming.API3.csproj", "{088CDAA5-10BF-44D1-BDF8-48D2F14D5039}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A92A85BE-2DA7-4F49-A2E7-5B311B30B163}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A92A85BE-2DA7-4F49-A2E7-5B311B30B163}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A92A85BE-2DA7-4F49-A2E7-5B311B30B163}.Release|Any CPU.Build.0 = Release|Any CPU
+		{088CDAA5-10BF-44D1-BDF8-48D2F14D5039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{088CDAA5-10BF-44D1-BDF8-48D2F14D5039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{088CDAA5-10BF-44D1-BDF8-48D2F14D5039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{088CDAA5-10BF-44D1-BDF8-48D2F14D5039}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
