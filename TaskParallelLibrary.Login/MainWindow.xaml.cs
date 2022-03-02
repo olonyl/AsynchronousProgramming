@@ -16,7 +16,20 @@ namespace TaskParallelLibrary.Login
             InitializeComponent();
         }
 
-        private async void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            var result = Task.Run(() => LoginToTestDeadLock()).Result;
+
+        }
+
+        private async Task<string> LoginToTestDeadLock()
+        {
+            await Task.Delay(2000);
+
+            return "Login Successful!";
+        }
+
+        private async Task LoginAsync()
         {
             try
             {
@@ -30,7 +43,6 @@ namespace TaskParallelLibrary.Login
                 btnLogin.Content = "Internal error";
                 btnLogin.IsEnabled = false;
             }
-
         }
 
         private async Task<string> ContinuationUsingAyncAndAwait()
@@ -38,21 +50,14 @@ namespace TaskParallelLibrary.Login
             //throw new Exception();
             try
             {
-                var loginTask = Task.Run(() =>
+                var loginTask = Task.Run(async () =>
                {
-                   //throw new Exception();
-
-                   Thread.Sleep(2000);
+                   await Task.Delay(2000);
                    return "Login Successful!";
                });
 
-                var logTaks = Task.Delay(2000); //Log the login
+                return await loginTask;
 
-                var purchaseTask = Task.Delay(2000); // Fetch purchases
-
-                await Task.WhenAll(loginTask, loginTask, purchaseTask);
-
-                return loginTask.Result;
             }
             catch (Exception)
             {
